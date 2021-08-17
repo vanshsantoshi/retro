@@ -25,12 +25,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if err := http.ListenAndServe(addr, nil); err != nil {
-		panic(err)
-	}
 
 	http.HandleFunc("/", handler)
-	http.ListenAndServe(addr, nil)
+	http.ListenAndServe("127.0.0.1" + addr, nil)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
