@@ -12,7 +12,7 @@ import (
 var entries = []string{}
 
 func determineListenAddress() (string, error) {
-	port := os.Getenv("PORT")
+	port := os.Getenv("process.env.PORT")
 	if port == "" {
 		return "", fmt.Errorf("$PORT not set")
 	}
