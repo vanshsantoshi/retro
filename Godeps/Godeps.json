@@ -1,0 +1,9 @@
+{
+	"ImportPath": "github.com/vanshsantoshi/retro",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v80",
+	"Packages": [
+		"./..."
+	],
+	"Deps": []
+}
