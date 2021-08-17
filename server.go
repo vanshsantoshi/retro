@@ -9,9 +9,26 @@ import (
 
 var entries = []string{}
 
+func determineListenAddress() (string, error) {
+	port := os.Getenv("user.env.PORT")
+	if port == "" {
+		return "", fmt.Errorf("$PORT not set")
+	}
+	return ":" + port, nil
+}
+
 func main() {
+	addr, err := determineListenAddress()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if err := http.ListenAndServe(addr, nil); err != nil {
+		panic(err)
+	}
+
 	http.HandleFunc("/", handler)
-	http.ListenAndServe("127.0.0.1:1234", nil)
+	http.ListenAndServe(addr, nil)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
