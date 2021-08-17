@@ -2,8 +2,8 @@ package main
 
 import (
 	"io/ioutil"
-	"log"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 	"net/http"
@@ -12,7 +12,7 @@ import (
 var entries = []string{}
 
 func determineListenAddress() (string, error) {
-	port := os.Getenv("process.env.PORT")
+	port := os.Getenv("PORT")
 	if port == "" {
 		return "", fmt.Errorf("$PORT not set")
 	}
@@ -22,12 +22,10 @@ func determineListenAddress() (string, error) {
 func main() {
 	addr, err := determineListenAddress()
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("err is not nil !")
 	}
-
-
 	http.HandleFunc("/", handler)
-	http.ListenAndServe("127.0.0.1" + addr, nil)
+	http.ListenAndServe(addr, nil)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
