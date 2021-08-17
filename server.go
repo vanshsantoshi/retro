@@ -37,7 +37,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 	    //serve the resource
-	    fmt.Fprintf(w, "<table><tr><th>Timestamp</th><th>Action</th><th>Data</th></tr>")
+	    fmt.Fprintf(w, "<table><tr><th>Time</th><th>Action</th><th>Data</th></tr>")
 	    for i, _ := range entries {
 	    	fmt.Fprintf(w, "%s", entries[len(entries) - i - 1])
 	    }
